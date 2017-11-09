@@ -23,9 +23,35 @@ describe('Project-3 Functions', () => {
       const addProperty = funcs.addProperty;
       assert.typeOf(addProperty, 'function');
     });
-    it('should return null when passed newCat and "color" in the argument', () => {
+    it('should add the property to the object with a value of null', () => {
+      var object = {
+        x: 1,
+        y: 2
+      };
+      var updatedObject = {
+        x: 1,
+        y: 2,
+        z: null
+      };
       const addProperty = funcs.addProperty;
-      assert.equal(addProperty(newCat, 'color').color, null);
+      assert.deepEqual(addProperty(object, 'z'), updatedObject);
+    });
+  });
+  describe('invokeMethod', () => {
+    it('should be a function', () => {
+      const invokeMethod = funcs.invokeMethod;
+      assert.typeOf(invokeMethod, 'function');
+    });
+    it('should invoke the method on the object', () => {
+      var object = {
+        x: 0,
+        incrementX: function() {
+        this.x++;
+        }
+      };
+      const invokeMethod = funcs.invokeMethod;
+      invokeMethod(object, 'incrementX');
+      assert.equal(object.x, 1);
     });
   });
 });
