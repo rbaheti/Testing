@@ -54,4 +54,29 @@ describe('Project-3 Functions', () => {
       assert.equal(object.x, 1);
     });
   });
+  describe('newUser', () => {
+    it('should be a function', () => {
+      const newUser = funcs.newUser;
+      assert.typeOf(newUser, 'function');
+    });
+    it('should return alex@ls.com  when passed "Alex", "alex@ls.com"and "vivaalex"', () => {
+      const newUser = funcs.newUser;
+      assert.equal(newUser('Alex', 'alex@ls.com', 'vivaalex').email, 'alex@ls.com');
+    });
+  });
+  describe('hasEmail', () => {
+    it('should be a function', () => {
+      const hasEmail = funcs.hasEmail;
+      assert.typeOf(hasEmail, 'function');
+    });
+    it('should return true  when "alex@ls.com" passed ', () => {
+      const hasEmail = funcs.hasEmail;
+      assert.deepEqual(hasEmail({username:'alex', email:'alex@ls.com'}), true);
+    });
+    it('should return true  when "alex@ls.com" passed ', () => {
+      const hasEmail = funcs.hasEmail;
+      assert.deepEqual(hasEmail({username:'alex', email:''}), false); 
+    });
+  });
 });
+
